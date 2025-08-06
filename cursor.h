@@ -1,7 +1,8 @@
 #ifndef CURSOR_H
 #define CURSOR_H
 
-typedef struct {
+typedef struct
+{
     int y, x;
 } Cursor;
 
