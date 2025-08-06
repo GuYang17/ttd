@@ -111,4 +111,9 @@ void parse_and_exec_cmd(const char *cmd, Cursor *cursor, int color, char symbol)
             }
         }
     }
+    else if (strncmp(cmd, "quit", 4) == 0)
+    {
+        endwin();
+        exit(0);
+    }
 }
