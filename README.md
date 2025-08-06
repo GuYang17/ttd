@@ -6,6 +6,7 @@ A simple ncurses-based terminal drawing program.
 
 - Draw with multiple colors and symbols
 - Based on C programming language and ncurses, so it is very fast and lightweight
+- Simple command system
 
 ## How to use
 
