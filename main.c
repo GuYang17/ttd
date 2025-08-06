@@ -29,6 +29,8 @@ int main()
     init_pair(7, COLOR_CYAN, COLOR_BLACK);    // 青色
     int current_color = 1;
 
+    int pen_size = 1;
+
     curs_set(1); // 始终显示光标
 
     char symbols[] = {'#', '*', '@', '%', '&', '$', '!'};
@@ -39,7 +41,7 @@ int main()
 
     Cursor cursor = {1, 1};
     cursor_move(&cursor);
-    draw_info(&cursor, current_color, symbols[symbol_index]);
+    draw_info(&cursor, current_color, symbols[symbol_index], pen_size);
 
     while (1)
     {
@@ -87,12 +89,12 @@ int main()
 
             // 绘制
             case ' ':
-                cursor_draw(&cursor, current_color, symbols[symbol_index]);
+                cursor_draw(&cursor, current_color, symbols[symbol_index], pen_size);
                 break;
 
             // 橡皮
             case 'i':
-                cursor_draw(&cursor, current_color, ' ');
+                cursor_draw(&cursor, current_color, ' ', pen_size);
                 break;
 
             // 向前切换颜色
@@ -151,11 +153,32 @@ int main()
                 symbol_index = symbol_count - 1;
                 break;
 
+            // 减小画笔粗细
+            case 'n':
+                if (pen_size > 1)
+                {
+                    pen_size--;
+                }
+                break;
+            
+            // 增大画笔粗细
+            case 'm':
+                if (pen_size < 10)
+                {
+                    pen_size++;
+                }
+                break;
+            
+            // 重置画笔粗细
+            case 'b':
+                pen_size = 1;
+                break;
+
             // 退出
             case 'x':
                 goto end;
             }
-            draw_info(&cursor, current_color, symbols[symbol_index]);
+            draw_info(&cursor, current_color, symbols[symbol_index], pen_size);
         }
         else
         {
@@ -163,7 +186,7 @@ int main()
             if (ch == 27)
             { // ESC
                 mode = 0;
-                draw_info(&cursor, current_color, symbols[symbol_index]);
+                draw_info(&cursor, current_color, symbols[symbol_index], pen_size);
                 continue;
             }
             else if (ch == KEY_BACKSPACE || ch == 127)
@@ -178,7 +201,7 @@ int main()
             {
                 parse_and_exec_cmd(cmd_buf, &cursor, current_color, symbols[symbol_index]);
                 mode = 0;
-                draw_info(&cursor, current_color, symbols[symbol_index]);
+                draw_info(&cursor, current_color, symbols[symbol_index], pen_size);
                 continue;
             }
             else if (isprint(ch) && cmd_len < CMD_BUF_SIZE - 1)

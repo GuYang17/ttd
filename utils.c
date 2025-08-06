@@ -22,11 +22,11 @@ void draw_border()
     mvaddch(LINES - 2, COLS - 1, ACS_LRCORNER); // 右下角
 }
 
-void draw_info(Cursor *cursor, int color, char symbol)
+void draw_info(Cursor *cursor, int color, char symbol, int pen_size)
 {
     move(LINES - 1, 0);
     clrtoeol();
-    mvprintw(LINES - 1, 0, "(%d, %d)", cursor->y, cursor->x);
+    mvprintw(LINES - 1, 0, "(%d, %d) %d", cursor->y, cursor->x, pen_size);
 
     attron(COLOR_PAIR(color));
     mvaddch(LINES - 1, COLS - 2, symbol);

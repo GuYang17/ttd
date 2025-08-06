@@ -23,24 +23,27 @@ Just run `./ttd`
 | Z / C             | Previous / Next symbol |
 | K / L             | First / Last symbol    |
 | I                 | Eraser                 |
+| N                 | Add Pen Size           |
+| M                 | Subtract Pen Size      |
+| B                 | Reset Pen Size         |
 | :                 | Command Mode           |
 | Esc               | Quit Command Mode      |
 | X                 | Exit                   |
 
 ## Commands
 
-- `:draw`           — Draw at current position
-- `:draw +N`        — Draw right N times (stop at border)
-- `:draw -N`        — Draw left N times (stop at border)
-- `:draw +*`        — Draw right until border
-- `:draw -*`        — Draw left until border
-- `:draw (N`        — Draw up N times (stop at border)
-- `:draw )N`        — Draw down N times (stop at border)
-- `:draw (*`        — Draw up until border
-- `:draw )*`        — Draw down until border
-- `:move`           — Move cursor to (1, 1)
-- `:move y x`       — Move cursor to (y, x)
-- `:quit`           — Quit the program
+- `:draw` — Draw at current position
+- `:draw +N` — Draw right N times (stop at border)
+- `:draw -N` — Draw left N times (stop at border)
+- `:draw +*` — Draw right until border
+- `:draw -*` — Draw left until border
+- `:draw (N` — Draw up N times (stop at border)
+- `:draw )N` — Draw down N times (stop at border)
+- `:draw (*` — Draw up until border
+- `:draw )*` — Draw down until border
+- `:move` — Move cursor to (1, 1)
+- `:move y x` — Move cursor to (y, x)
+- `:quit` — Quit the program
 
 Example:
 
@@ -55,6 +58,6 @@ Example:
 
 Install `libncurses5-dev` in your computer. Then run: `make`
 
-## Other 
+## Other
 
 It is just a part of my programming learning.
