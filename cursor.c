@@ -33,8 +33,8 @@ void cursor_move(Cursor *cursor) {
     move(cursor->y, cursor->x);
 }
 
-void cursor_draw(Cursor *cursor, int color) {
+void cursor_draw(Cursor *cursor, int color, char ch) {
     attron(COLOR_PAIR(color));
-    mvaddch(cursor->y, cursor->x, '#');
+    mvaddch(cursor->y, cursor->x, ch);
     attroff(COLOR_PAIR(color));
 }

@@ -21,6 +21,10 @@ int main() {
 
     curs_set(1);    // 始终显示光标
 
+    char symbols[] = {'#', '*', '@', '%', '&', '$', '!'};
+    int symbol_count = sizeof(symbols) / sizeof(symbols[0]);
+    int symbol_index = 0;
+
     draw_border();
 
     Cursor cursor = {1, 1};
@@ -30,47 +34,89 @@ int main() {
     while (1) {
         int ch = getch();
         switch (ch) {
+
+            // 向上
             case KEY_UP:
-            case 'k':
             case 'w':
                 cursor_move_up(&cursor);
                 break;
+
+            // 向下
             case KEY_DOWN:
-            case 'j':
             case 's':
                 cursor_move_down(&cursor);
                 break;
+
+            // 向左
             case KEY_LEFT:
-            case 'h':
             case 'a':
                 cursor_move_left(&cursor);
                 break;
+
+            // 向右
             case KEY_RIGHT:
-            case 'l':
             case 'd':
                 cursor_move_right(&cursor);
                 break;
+
+            // 绘制
             case ' ':
-                cursor_draw(&cursor, current_color);
+                cursor_draw(&cursor, current_color, symbols[symbol_index]);
                 break;
+
+            // 向前切换颜色
             case 'q':
                 current_color--;
                 if (current_color < 1) {
                     current_color = 7;
                 }
                 break;
+
+            // 向后切换颜色
             case 'e':
                 current_color++;
                 if (current_color > 7) {
                     current_color = 1;
                 }
                 break;
+
+            // 切换为第一个颜色
             case 'o':
                 current_color = 1;
                 break;
+
+            // 切换为最后一个颜色
             case 'p':
                 current_color = 7;
                 break;
+
+            // 向前切换符号
+            case 'z':
+                symbol_index--;
+                if (symbol_index < 0) {
+                    symbol_index = symbol_count - 1;
+                }
+                break;
+
+            // 向后切换符号
+            case 'c':
+                symbol_index++;
+                if (symbol_index >= symbol_count) {
+                    symbol_index = 0;
+                }
+                break;
+
+            // 切换为第一个符号
+            case 'k':
+                symbol_index = 0;
+                break;
+
+            // 切换为最后一个符号
+            case 'l':
+                symbol_index = symbol_count - 1;
+                break;
+
+            // 退出
             case 'x':
                 goto end;
         }
