@@ -90,6 +90,11 @@ int main()
                 cursor_draw(&cursor, current_color, symbols[symbol_index]);
                 break;
 
+            // 橡皮
+            case 'i':
+                cursor_draw(&cursor, current_color, ' ');
+                break;
+
             // 向前切换颜色
             case 'q':
                 current_color--;
