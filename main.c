@@ -3,63 +3,13 @@
 #include <ctype.h>
 #include "cursor.h"
 #include "utils.h"
+#include "commands.h"
 
 #define CMD_BUF_SIZE 128
 
 int mode = 0; // 0: normal, 1: command
 char cmd_buf[CMD_BUF_SIZE] = {0};
 int cmd_len = 0;
-
-void parse_and_exec_cmd(const char *cmd, Cursor *cursor, int color, char symbol)
-{
-    if (strncmp(cmd, "draw", 4) == 0)
-    {
-        const char *arg = cmd + 4;
-        while (*arg == ' ')
-            arg++;
-        if (*arg == '\0')
-        {
-            cursor_draw(cursor, color, symbol);
-        }
-        else if (*arg == '+' || *arg == '-')
-        {
-            int dir = (*arg == '+') ? 1 : -1;
-            arg++;
-            if (isdigit(*arg))
-            {
-                int n = atoi(arg);
-                for (int i = 0; i < n; i++)
-                {
-                    if (dir == 1 && cursor->x < COLS - 2)
-                    {
-                        cursor_move_right(cursor);
-                        cursor_draw(cursor, color, symbol);
-                    }
-                    else if (dir == -1 && cursor->x > 1)
-                    {
-                        cursor_move_left(cursor);
-                        cursor_draw(cursor, color, symbol);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-            else if (*arg == '*')
-            {
-                while ((dir == 1 && cursor->x < COLS - 2) || (dir == -1 && cursor->x > 1))
-                {
-                    if (dir == 1)
-                        cursor_move_right(cursor);
-                    else
-                        cursor_move_left(cursor);
-                    cursor_draw(cursor, color, symbol);
-                }
-            }
-        }
-    }
-}
 
 int main()
 {

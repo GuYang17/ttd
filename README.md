@@ -21,7 +21,12 @@ Just run `./ttd`
 | O / P             | First / Last color     |
 | Z / C             | Previous / Next symbol |
 | K / L             | First / Last symbol    |
+| :                 | Command Mode           |
+| Esc               | Quit Command Mode      |
 | X                 | Exit                   |
+
+## Commands
+
 
 
 ## Build
