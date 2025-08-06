@@ -1,6 +1,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <ncurses.h>
+#include <stdlib.h>
 #include "cursor.h"
 #include "commands.h"
 
