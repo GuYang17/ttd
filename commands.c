@@ -90,4 +90,25 @@ void parse_and_exec_cmd(const char *cmd, Cursor *cursor, int color, char symbol)
             }
         }
     }
+    else if (strncmp(cmd, "move", 4) == 0)
+    {
+        const char *arg = cmd + 4;
+        while (*arg == ' ') arg++;
+        if (*arg == '\0') {
+            cursor->y = 1;
+            cursor->x = 1;
+            cursor_move(cursor);
+        } else {
+            int y = 1, x = 1;
+            if (sscanf(arg, "%d %d", &y, &x) == 2) {
+                if (y < 1) y = 1;
+                if (x < 1) x = 1;
+                if (y > LINES-3) y = LINES-3;
+                if (x > COLS-2) x = COLS-2;
+                cursor->y = y;
+                cursor->x = x;
+                cursor_move(cursor);
+            }
+        }
+    }
 }
