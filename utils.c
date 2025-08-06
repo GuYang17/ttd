@@ -18,10 +18,15 @@ void draw_border() {
     mvaddch(LINES - 2, COLS - 1, ACS_LRCORNER); // 右下角
 }
 
-void draw_yx(Cursor* cursor) {
+void draw_info(Cursor* cursor, int color, char symbol) {
     move(LINES - 1, 0);
-    clrtoeol(); // 清空该行
+    clrtoeol();
     mvprintw(LINES - 1, 0, "(%d, %d)", cursor->y, cursor->x);
+
+    attron(COLOR_PAIR(color));
+    mvaddch(LINES - 1, COLS - 2, symbol);
+    attroff(COLOR_PAIR(color));
+
     move(cursor->y, cursor->x);
     refresh();
 }

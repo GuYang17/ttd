@@ -5,6 +5,6 @@
 #include "cursor.h"
 
 void draw_border();
-void draw_yx(Cursor* cursor);
+void draw_info(Cursor* cursor, int color, char symbol);
 
 #endif

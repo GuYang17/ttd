@@ -29,7 +29,7 @@ int main() {
 
     Cursor cursor = {1, 1};
     cursor_move(&cursor);
-    draw_yx(&cursor);
+    draw_info(&cursor, current_color, symbols[symbol_index]);
 
     while (1) {
         int ch = getch();
@@ -121,7 +121,7 @@ int main() {
                 goto end;
         }
 
-        draw_yx(&cursor);
+        draw_info(&cursor, current_color, symbols[symbol_index]);
     }
 
 end:
