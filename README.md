@@ -52,3 +52,7 @@ Example:
 ## Build
 
 Install `libncurses5-dev` in your computer. Then run: `make`
+
+## Other 
+
+It is just a part of my programming learning.
