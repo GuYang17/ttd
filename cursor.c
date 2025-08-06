@@ -33,6 +33,8 @@ void cursor_move(Cursor *cursor) {
     move(cursor->y, cursor->x);
 }
 
-void cursor_draw(Cursor *cursor) {
-    mvaddch(cursor->y, cursor->x, ACS_CKBOARD);
+void cursor_draw(Cursor *cursor, int color) {
+    attron(COLOR_PAIR(color));
+    mvaddch(cursor->y, cursor->x, '#');
+    attroff(COLOR_PAIR(color));
 }
