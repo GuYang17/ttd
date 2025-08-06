@@ -27,7 +27,27 @@ Just run `./ttd`
 
 ## Commands
 
+- `:draw`           — Draw at current position
+- `:draw +N`        — Draw right N times (stop at border)
+- `:draw -N`        — Draw left N times (stop at border)
+- `:draw +*`        — Draw right until border
+- `:draw -*`        — Draw left until border
+- `:draw (N`        — Draw up N times (stop at border)
+- `:draw )N`        — Draw down N times (stop at border)
+- `:draw (*`        — Draw up until border
+- `:draw )*`        — Draw down until border
+- `:move`           — Move cursor to (1, 1)
+- `:move y x`       — Move cursor to (y, x)
+- `:quit`           — Quit the program
 
+Example:
+
+```
+:draw +10
+:draw (*
+:move 5 10
+:quit
+```
 
 ## Build
 
